@@ -12,7 +12,6 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -32,7 +31,7 @@ export default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="index"
+        name="Home"
         options={{
           title: 'Home',
           tabBarIcon:({color,size})=>(
@@ -41,30 +40,30 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="liked"
+        name="Saved"
         options={{
-          title: 'Liked',
+          title: 'Saved',
           tabBarIcon:({color,size})=>(
             <MaterialCommunityIcons name="heart-outline" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="post"
+        name="Upload"
         options={{
-          title: 'Post',
+          title: 'Upload',
           tabBarIcon:({color,size})=>(
             <Feather name="plus-circle" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="Profile"
         options={{
           title: 'Profile',
           tabBarIcon:({color,size})=>(
             <Ionicons name="person-circle-outline" size={size} color={color} />
-            ),
+          ),
         }}
       />
     </Tabs>
