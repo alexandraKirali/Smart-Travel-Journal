@@ -8,7 +8,7 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDvxP4Mobt4dzaDOV_EjG3Yj_vHiC694wU",
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
   authDomain: "smarttraveljournal-f5500.firebaseapp.com",
   projectId: "smarttraveljournal-f5500",
   storageBucket: "smarttraveljournal-f5500.firebasestorage.app",
