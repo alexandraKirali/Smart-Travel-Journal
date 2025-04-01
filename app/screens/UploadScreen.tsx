@@ -274,7 +274,7 @@ export default function UploadScreen({ navigation }: Props) {
           />
 
           <ThemedView style={styles.imageContainer}>
-            <ThemedText>Image</ThemedText>
+            <ThemedText>Click below to upload an image</ThemedText>
             {imageUri ? (
               <TouchableOpacity onPress={pickImage}>
                 <Image source={{ uri: imageUri }} style={styles.image} />
@@ -329,24 +329,28 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     fontSize: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#f7f7f7',
   },
   textArea: {
     height: 80,
     textAlignVertical: 'top',
   },
   picker: {
-    backgroundColor: '#fff',
+    backgroundColor: '#f7f7f7',
     borderRadius: 8,
   },
   imageContainer: {
     gap: 8,
   },
   imageButton: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    padding: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
-    height: 60,
+    backgroundColor: '#f7f7f7',
+    height: 70,
   },
   image: {
     width: '100%',
@@ -354,7 +358,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   submitButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#00929a',
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
@@ -378,13 +382,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f7f7f7',
     borderWidth: 1,
     borderColor: '#ddd',
   },
   selectedTag: {
-    backgroundColor: '#007AFF',
-    borderColor: '#007AFF',
+    backgroundColor: '#00929a',
+    borderColor: '#00929a',
   },
   tagText: {
     fontSize: 13,
@@ -394,7 +398,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   uploadIcon: {
-    width: 64,
-    height: 64,
+    width: 50,
+    height: 50,
   },
 }); 
