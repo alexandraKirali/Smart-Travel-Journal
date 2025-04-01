@@ -1,6 +1,7 @@
 import { StyleSheet, TouchableOpacity, ScrollView, Image, ActivityIndicator, Alert } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { SafeScreenView } from '@/components/SafeScreenView';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { TabParamList } from '../lib/navigation';
 import { useForm, Controller } from 'react-hook-form';
@@ -173,133 +174,138 @@ export default function UploadScreen({ navigation }: Props) {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <ThemedView style={styles.form}>
-        <ThemedText type="title">Create Travel Entry</ThemedText>
+    <SafeScreenView>
+      <ScrollView style={styles.container}>
+        <ThemedView style={styles.form}>
+          <ThemedText type="title">Create Travel Entry</ThemedText>
 
-        <Controller
-          control={control}
-          name="title"
-          render={({ field: { onChange, value } }) => (
-            <ThemedView style={styles.inputContainer}>
-              <ThemedText>Title</ThemedText>
-              <TextInput
-                style={styles.input}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Enter title"
-                placeholderTextColor="#666"
-              />
-              {errors.title && (
-                <ThemedText style={styles.errorText}>{errors.title.message}</ThemedText>
-              )}
-            </ThemedView>
-          )}
-        />
-
-        <Controller
-          control={control}
-          name="description"
-          render={({ field: { onChange, value } }) => (
-            <ThemedView style={styles.inputContainer}>
-              <ThemedText>Description</ThemedText>
-              <TextInput
-                style={[styles.input, styles.textArea]}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Describe your travel experience"
-                placeholderTextColor="#666"
-                multiline
-                numberOfLines={4}
-              />
-              {errors.description && (
-                <ThemedText style={styles.errorText}>{errors.description.message}</ThemedText>
-              )}
-            </ThemedView>
-          )}
-        />
-
-        <Controller
-          control={control}
-          name="tags"
-          render={({ field: { value } }) => (
-            <ThemedView style={styles.inputContainer}>
-              <ThemedText>Add tags to your entry (max 3)</ThemedText>
-              <ThemedView style={styles.tagsContainer}>
-                {tags.map((tag) => (
-                  <TouchableOpacity
-                    key={tag.id}
-                    style={[
-                      styles.tagButton,
-                      selectedTags.includes(tag.name) && styles.selectedTag
-                    ]}
-                    onPress={() => handleTagSelect(tag.name)}
-                  >
-                    <ThemedText style={[
-                      styles.tagText,
-                      selectedTags.includes(tag.name) && styles.selectedTagText
-                    ]}>
-                      {tag.name}
-                    </ThemedText>
-                  </TouchableOpacity>
-                ))}
+          <Controller
+            control={control}
+            name="title"
+            render={({ field: { onChange, value } }) => (
+              <ThemedView style={styles.inputContainer}>
+                <ThemedText>Title</ThemedText>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={onChange}
+                  value={value}
+                  placeholder="Enter title"
+                  placeholderTextColor="#666"
+                />
+                {errors.title && (
+                  <ThemedText style={styles.errorText}>{errors.title.message}</ThemedText>
+                )}
               </ThemedView>
-              {errors.tags && (
-                <ThemedText style={styles.errorText}>{errors.tags.message}</ThemedText>
-              )}
-            </ThemedView>
-          )}
-        />
+            )}
+          />
 
-        <Controller
-          control={control}
-          name="location"
-          render={({ field: { onChange, value } }) => (
-            <ThemedView style={styles.inputContainer}>
-              <ThemedText>Location</ThemedText>
-              <TextInput
-                style={styles.input}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Enter location"
-                placeholderTextColor="#666"
-              />
-              {errors.location && (
-                <ThemedText style={styles.errorText}>{errors.location.message}</ThemedText>
-              )}
-            </ThemedView>
-          )}
-        />
+          <Controller
+            control={control}
+            name="description"
+            render={({ field: { onChange, value } }) => (
+              <ThemedView style={styles.inputContainer}>
+                <ThemedText>Description</ThemedText>
+                <TextInput
+                  style={[styles.input, styles.textArea]}
+                  onChangeText={onChange}
+                  value={value}
+                  placeholder="Describe your travel experience"
+                  placeholderTextColor="#666"
+                  multiline
+                  numberOfLines={4}
+                />
+                {errors.description && (
+                  <ThemedText style={styles.errorText}>{errors.description.message}</ThemedText>
+                )}
+              </ThemedView>
+            )}
+          />
 
-        <ThemedView style={styles.imageContainer}>
-          <ThemedText>Image</ThemedText>
-          {imageUri ? (
-            <TouchableOpacity onPress={pickImage}>
-              <Image source={{ uri: imageUri }} style={styles.image} />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity style={styles.imageButton} onPress={pickImage}>
-              <ThemedText>Pick an image</ThemedText>
-            </TouchableOpacity>
-          )}
-          {errors.image && (
-            <ThemedText style={styles.errorText}>{errors.image.message}</ThemedText>
-          )}
+          <Controller
+            control={control}
+            name="tags"
+            render={({ field: { value } }) => (
+              <ThemedView style={styles.inputContainer}>
+                <ThemedText>Add tags to your entry (max 3)</ThemedText>
+                <ThemedView style={styles.tagsContainer}>
+                  {tags.map((tag) => (
+                    <TouchableOpacity
+                      key={tag.id}
+                      style={[
+                        styles.tagButton,
+                        selectedTags.includes(tag.name) && styles.selectedTag
+                      ]}
+                      onPress={() => handleTagSelect(tag.name)}
+                    >
+                      <ThemedText style={[
+                        styles.tagText,
+                        selectedTags.includes(tag.name) && styles.selectedTagText
+                      ]}>
+                        {tag.name}
+                      </ThemedText>
+                    </TouchableOpacity>
+                  ))}
+                </ThemedView>
+                {errors.tags && (
+                  <ThemedText style={styles.errorText}>{errors.tags.message}</ThemedText>
+                )}
+              </ThemedView>
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="location"
+            render={({ field: { onChange, value } }) => (
+              <ThemedView style={styles.inputContainer}>
+                <ThemedText>Location</ThemedText>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={onChange}
+                  value={value}
+                  placeholder="Enter location"
+                  placeholderTextColor="#666"
+                />
+                {errors.location && (
+                  <ThemedText style={styles.errorText}>{errors.location.message}</ThemedText>
+                )}
+              </ThemedView>
+            )}
+          />
+
+          <ThemedView style={styles.imageContainer}>
+            <ThemedText>Click below to upload an image</ThemedText>
+            {imageUri ? (
+              <TouchableOpacity onPress={pickImage}>
+                <Image source={{ uri: imageUri }} style={styles.image} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity style={styles.imageButton} onPress={pickImage}>
+                <Image 
+                  source={{ uri: 'https://cdn-icons-png.flaticon.com/512/2496/2496846.png' }} 
+                  style={styles.uploadIcon}
+                />
+              </TouchableOpacity>
+            )}
+            {errors.image && (
+              <ThemedText style={styles.errorText}>{errors.image.message}</ThemedText>
+            )}
+          </ThemedView>
+
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={handleSubmit(onSubmit)}
+            disabled={isLoading || !imageUri}
+          >
+            {isLoading ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <ThemedText style={styles.submitButtonText}>Create Entry</ThemedText>
+            )}
+          </TouchableOpacity>
         </ThemedView>
-
-        <TouchableOpacity
-          style={styles.submitButton}
-          onPress={handleSubmit(onSubmit)}
-          disabled={isLoading || !imageUri}
-        >
-          {isLoading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <ThemedText style={styles.submitButtonText}>Create Entry</ThemedText>
-          )}
-        </TouchableOpacity>
-      </ThemedView>
-    </ScrollView>
+      </ScrollView>
+    </SafeScreenView>
   );
 }
 
@@ -308,7 +314,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   form: {
-    paddingTop: 70,
+    paddingTop: 35,
     paddingBottom: 15,
     paddingLeft: 15,
     paddingRight: 15,
@@ -322,15 +328,15 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     borderRadius: 8,
     padding: 12,
-    fontSize: 16,
-    backgroundColor: '#fff',
+    fontSize: 15,
+    backgroundColor: '#f7f7f7',
   },
   textArea: {
-    height: 100,
+    height: 80,
     textAlignVertical: 'top',
   },
   picker: {
-    backgroundColor: '#fff',
+    backgroundColor: '#f7f7f7',
     borderRadius: 8,
   },
   imageContainer: {
@@ -340,9 +346,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
-    padding: 20,
+    padding: 12,
     alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    backgroundColor: '#f7f7f7',
+    height: 70,
   },
   image: {
     width: '100%',
@@ -350,11 +358,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   submitButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#00929a',
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 5,
   },
   submitButtonText: {
     color: '#fff',
@@ -374,19 +382,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f7f7f7',
     borderWidth: 1,
     borderColor: '#ddd',
   },
   selectedTag: {
-    backgroundColor: '#007AFF',
-    borderColor: '#007AFF',
+    backgroundColor: '#00929a',
+    borderColor: '#00929a',
   },
   tagText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#333',
   },
   selectedTagText: {
     color: '#fff',
+  },
+  uploadIcon: {
+    width: 50,
+    height: 50,
   },
 }); 
