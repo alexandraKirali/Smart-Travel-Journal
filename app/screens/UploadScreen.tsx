@@ -19,7 +19,7 @@ type Props = NativeStackScreenProps<TabParamList, 'Upload'>;
 
 const formSchema = z.object({
   title: z.string().min(1, 'Title is required'),
-  description: z.string().min(1, 'Description is required'),
+  description: z.string().optional(),
   tags: z.array(z.string()).max(3, 'You can select up to 3 tags'),
   location: z.string().min(1, 'Location is required'),
   image: z.string().min(1, 'Image is required'),
@@ -154,7 +154,7 @@ export default function UploadScreen({ navigation }: Props) {
               reset();
               setImageUri(null);
               setSelectedTags([]);
-              // Reset location to auto-detected value if available
+              // Reset location to auto-detected value
               if (autoLocation) {
                 setValue('location', autoLocation);
               }
