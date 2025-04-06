@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/app/components/ThemedText';
+import { ThemedView } from '@/app/components/ThemedView';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { TabParamList } from '../lib/navigation';
 
