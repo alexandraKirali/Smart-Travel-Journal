@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity, ScrollView, Image, ActivityIndicator, Alert } from 'react-native';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { SafeScreenView } from '@/components/SafeScreenView';
+import { ThemedText } from '@/app/components/ThemedText';
+import { ThemedView } from '@/app/components/ThemedView';
+import { SafeScreenView } from '@/app/components/SafeScreenView';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { TabParamList } from '../lib/navigation';
 import { useForm, Controller } from 'react-hook-form';
