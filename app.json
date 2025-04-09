@@ -32,10 +32,13 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "clerkFrontendApi": "YOUR_CLERK_FRONTEND_API"
   }
-}
+}}
